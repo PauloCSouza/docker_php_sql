@@ -28,6 +28,8 @@ services:
       - "./backend/www:/var/www/html"
     ports: 
       - "9000:80"
+    depends_on:
+      - db
 
   cms:
     image: nginx:1.13
