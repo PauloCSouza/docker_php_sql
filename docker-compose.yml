@@ -1,0 +1,41 @@
+version: '3.6'
+services: 
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: cms-database
+    environment:
+      - SA_PASSWORD=0sz86cv50@
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+    volumes:
+    - ./backup:/var/opt/mssql/backup
+
+  frontend:
+    image: nginx:1.13
+    container_name: cms-frontend
+    volumes:
+      - ./frontend:/usr/share/nginx/html/
+    ports: 
+      - 8080:80
+
+  backend:
+    build:
+      context: ./backend
+    container_name: cms-backend
+    volumes:
+      - "./backend/www:/var/www/html"
+    ports: 
+      - "9000:80"
+
+  cms:
+    image: nginx:1.13
+    container_name: cms-back-front
+    volumes:
+      - "./backend/www:/var/www/html"
+      - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
+    ports:
+      - "80:80"
+    depends_on:
+      - backend

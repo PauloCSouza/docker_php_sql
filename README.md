@@ -1,2 +1,13 @@
 # docker_php_sql
-Docker utilizando micro services com banco de dados SQL Server, FrontEnd, Backend (PHP com NGINX)
+
+Para iniciar o projeto utilizar o comando "docker-compose up -d";
+
+Docker utilizando micro-services :
+
+- Backend :
+
+PHP 7.4 com SQL SERVER
+
+- Frontend :
+
+NGINX
