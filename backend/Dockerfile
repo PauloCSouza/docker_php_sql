@@ -16,4 +16,7 @@ RUN pecl install pdo_sqlsrv
 RUN docker-php-ext-enable sqlsrv
 RUN docker-php-ext-enable pdo_sqlsrv
 
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 WORKDIR /var/www/html
