@@ -12,6 +12,12 @@ services:
     volumes:
     - ./backup:/var/opt/mssql/backup
 
+  redis:
+    image: redis:latest
+    container_name: cms-redis
+    ports:
+      - "6379:6379"
+
   frontend:
     image: nginx:1.13
     container_name: cms-frontend

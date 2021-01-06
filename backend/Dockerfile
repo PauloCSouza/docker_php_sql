@@ -19,4 +19,9 @@ RUN docker-php-ext-enable pdo_sqlsrv
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Install Redis
+RUN pecl install -o -f redis \
+&&  rm -rf /tmp/pear \
+&&  docker-php-ext-enable redis
+
 WORKDIR /var/www/html
