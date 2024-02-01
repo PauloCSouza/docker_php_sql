@@ -1,11 +1,8 @@
 <?php
 
-// phpinfo();
-// exit;
-
 define('DB_HOST'        , "cms-database");
 define('DB_USER'        , "sa");
-define('DB_PASSWORD'    , "0sz86cv50@");
+define('DB_PASSWORD'    , "your_password");
 define('DB_NAME'        , "website");
 define('DB_DRIVER'      , "sqlsrv");
 

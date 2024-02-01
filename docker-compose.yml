@@ -1,16 +1,15 @@
-version: '3.6'
-services: 
-
+version: "3.6"
+services:
   db:
     image: mcr.microsoft.com/mssql/server:2017-latest
     container_name: cms-database
     environment:
-      - SA_PASSWORD=0sz86cv50@
+      - SA_PASSWORD=your_password
       - ACCEPT_EULA=Y
     ports:
       - "1433:1433"
     volumes:
-    - ./backup:/var/opt/mssql/backup
+      - ./backup:/var/opt/mssql/backup
 
   redis:
     image: redis:latest
@@ -23,7 +22,7 @@ services:
     container_name: cms-frontend
     volumes:
       - ./frontend:/usr/share/nginx/html/
-    ports: 
+    ports:
       - 8080:80
 
   backend:
@@ -32,7 +31,7 @@ services:
     container_name: cms-backend
     volumes:
       - "./backend/www:/var/www/html"
-    ports: 
+    ports:
       - "9000:80"
     depends_on:
       - db
